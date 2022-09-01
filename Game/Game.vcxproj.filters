@@ -38,9 +38,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Build\Assets\Scene\Dragonuniverse.png">
-      <Filter>Resource Files\Scene</Filter>
-    </Image>
     <Image Include="..\Build\Assets\Scene\Desert.gif">
       <Filter>Resource Files\Scene</Filter>
     </Image>
@@ -83,6 +80,9 @@
     <Image Include="..\Build\Assets\Scene\Menu.png">
       <Filter>Resource Files\Scene</Filter>
     </Image>
+    <Image Include="..\Build\Assets\Scene\Dragonuniverse.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gokuflight.h">
@@ -114,6 +114,9 @@
       <Filter>Resource Files\Sound</Filter>
     </Media>
     <Media Include="..\Build\Assets\Sound\DragonBallMenu.mp3">
+      <Filter>Resource Files\Sound</Filter>
+    </Media>
+    <Media Include="..\Build\Assets\Sound\coin.wav">
       <Filter>Resource Files\Sound</Filter>
     </Media>
   </ItemGroup>

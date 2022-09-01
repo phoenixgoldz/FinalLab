@@ -11,7 +11,7 @@ namespace phoenix {
 	void PlayerComponent::Update()
 	{
 		float thrust = 0;
-
+		Vector2 velocity;
 		Vector2 direction = Vector2::zero;
 
 		// set camera 
@@ -25,46 +25,24 @@ namespace phoenix {
 		//update transform with input controls
 		if (g_inputSystem.GetKeyState(key_left) == InputSystem::KeyState::Held)
 		{
+			auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
 			direction = Vector2::left;
+			if (velocity.x != 0) animComponent->SetflipHorizontal(velocity.x < 0);
+			if (std::fabs(velocity.x) > 0)
+			{
+				animComponent->SetSequence("run");
+			}
+			else
+			{
+				animComponent->SetSequence("idle");
+			}
+
 		}
 
 		if (g_inputSystem.GetKeyState(key_right) == phoenix::InputSystem::KeyState::Held)
 		{
 			direction = Vector2::right;
-		}
-
-		if (g_inputSystem.GetKeyState(key_up) == phoenix::InputSystem::KeyState::Held)
-		{
-			direction = Vector2::up;
-		}
-
-		if (g_inputSystem.GetKeyState(key_down) == phoenix::InputSystem::KeyState::Held)
-		{
-			direction = Vector2::down;
-		}
-
-		Vector2 velocity;
-		auto component = m_owner->GetComponent<phoenix::PhysicsComponent>();
-		if (component)
-		{
-			component->ApplyForce(direction * speed);
-			velocity = component->velocity;
-		}
-
-			// apply attack sprite image and set to damage enemy
-		if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Pressed)
-		{
 			auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
-			if (animComponent)
-			{
-				animComponent->SetSequence("Attack");
-			}
-		}
-
-
-		auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
-		if (animComponent)
-		{
 			if (velocity.x != 0) animComponent->SetflipHorizontal(velocity.x < 0);
 			if (std::fabs(velocity.x) > 0)
 			{
@@ -75,6 +53,69 @@ namespace phoenix {
 				animComponent->SetSequence("idle");
 			}
 		}
+
+		if (g_inputSystem.GetKeyState(key_up) == phoenix::InputSystem::KeyState::Held)
+		{
+			direction = Vector2::up;
+			auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
+			if (velocity.x != 0) animComponent->SetflipHorizontal(velocity.x < 0);
+			if (std::fabs(velocity.x) > 0)
+			{
+				animComponent->SetSequence("run");
+			}
+			else
+			{
+				animComponent->SetSequence("idle");
+			}
+		}
+
+		if (g_inputSystem.GetKeyState(key_down) == phoenix::InputSystem::KeyState::Held)
+		{
+			direction = Vector2::down;
+			auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
+			if (velocity.x != 0) animComponent->SetflipHorizontal(velocity.x < 0);
+			if (std::fabs(velocity.x) > 0)
+			{
+				animComponent->SetSequence("run");
+			}
+			else
+			{
+				animComponent->SetSequence("idle");
+			}
+		}
+
+
+		auto component = m_owner->GetComponent<phoenix::PhysicsComponent>();
+		if (component)
+		{
+			component->ApplyForce(direction * speed);
+			velocity = component->velocity;
+		}
+
+		// apply attack sprite image and set to damage enemy
+		if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Released)
+		{
+			auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
+			if (animComponent)
+			{
+				animComponent->SetSequence("idle");
+			}
+		}
+		if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Pressed)
+		{
+			auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
+			if (animComponent)
+			{
+				animComponent->SetSequence("Attack");
+			}
+			else
+			{
+				animComponent->SetSequence("idle");
+			}
+
+		}
+
+
 	}
 }
 
@@ -98,16 +139,18 @@ void phoenix::PlayerComponent::OnNotify(const Event& event)
 	{
 		health -= std::get<float>(event.data);
 
-		if (health -= 0)
+		auto animComponent = m_owner->GetComponent<SpriteAnimComponent>();
+		if (health <= 0)
 		{
-			m_owner->SetDestroy();
-
+			animComponent->SetSequence("Dead");
+			
 			Event event;
 			event.name = "EVENT_PLAYER_DEAD";
-
 			g_eventManager.Notify(event);
 
+			m_owner->SetDestroy();
 		}
+		
 
 	}
 }
@@ -120,7 +163,7 @@ void phoenix::PlayerComponent::OnCollisionEnter(Actor* other)
 		Event event;
 		event.name = "EVENT_ADD_POINTS";
 		event.data = 100;
-
+		
 		g_eventManager.Notify(event);
 		other->SetDestroy();
 	}
@@ -144,7 +187,7 @@ void phoenix::PlayerComponent::OnCollisionExit(Actor* other)
 	if (other->GetTag() == "Enemy")
 	{
 		Event event;
-		event.name = "EVENT_DAMAGE";
+		event.name = "EVENT_PICKUP";
 		event.data = damage;
 		event.reciever = other;
 	}
@@ -153,9 +196,11 @@ void phoenix::PlayerComponent::OnCollisionExit(Actor* other)
 		Event event;
 		event.name = "EVENT_ADD_POINTS";
 		event.data = 100;
+		
+		g_audioSystem.PlayAudio("Pickup",1,1,false);
 
 		g_eventManager.Notify(event);
-		other->SetDestroy();
+		other->SetDestroy(true);
 	}
 	if (other->GetTag() == "Ground")
 	{

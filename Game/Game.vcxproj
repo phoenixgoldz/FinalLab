@@ -172,6 +172,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Media Include="..\Build\Assets\Sound\coin.wav" />
     <Media Include="..\Build\Assets\Sound\DragonBallGamestart.mp3" />
     <Media Include="..\Build\Assets\Sound\DragonBallMenu.mp3" />
     <Media Include="..\Build\Assets\Sound\dragonBallZ.mp3" />

@@ -21,6 +21,9 @@ namespace phoenix
 		float health = 100;
 		float damage = 10;
 		float speed = 0;
+
+		bool Attack = false;
+		bool Dead = false;
 	};
 }
 

@@ -25,12 +25,40 @@
 					"sequences":[
 						{
 							"sequence.name":"cloud",
-							"sequence.fps":3,
-							"sequence.num_columns":3,
+							"sequence.fps":18,
+							"sequence.num_columns":18,
 							"sequence.num_rows":1,
 							"sequence.start_frame":1,
-							"sequence.end_frame":3
+							"sequence.end_frame":18
 						}
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"Floor",
+			"transform":{
+				"position":[
+					0,
+					300
+				],
+				"scale":[
+					1,
+					1
+				],
+				"rotation":0
+			},
+			"components":[
+				{
+					"type":"RBPhysicsComponent",
+					"data.is_dynamic":false
+				},
+				{
+					"type":"CollisionComponent",
+					"data.size":[
+						800,
+						24
 					]
 				}
 			]
@@ -78,8 +106,8 @@
 			"active":true,
 			"transform":{
 				"position":[
-					10,
-					10
+					300,
+					0
 				],
 				"scale":[
 					1,
@@ -112,7 +140,7 @@
 			"active":true,
 			"transform":{
 				"position":[
-					20,
+					300,
 					30
 				],
 				"scale":[
@@ -124,7 +152,7 @@
 			"components":[
 				{
 					"type":"TextComponent",
-					"text":"00000",
+					"text":"0",
 					"font_name":"Fonts/Arcade Future.otf",
 					"font_size":48,
 					"registration":[
@@ -142,12 +170,46 @@
 		},
 		{
 			"type":"Actor",
+			"name":"Title",
+			"active":true,
+			"transform":{
+				"position":[
+					10,
+					0
+				],
+				"scale":[
+					1,
+					1
+				],
+				"rotation":0
+			},
+			"components":[
+				{
+					"type":"TextComponent",
+					"text":"Lives",
+					"font_name":"Fonts/Arcade Future.otf",
+					"font_size":48,
+					"registration":[
+						0.5,
+						0.5
+					],
+					"color":[
+						0,
+						0,
+						0,
+						255
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
 			"name":"Health",
 			"active":true,
 			"transform":{
 				"position":[
-					30,
-					60
+					20,
+					30
 				],
 				"scale":[
 					1,

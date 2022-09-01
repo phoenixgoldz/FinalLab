@@ -7,7 +7,9 @@ namespace phoenix
 	{
 		g_eventManager.Unsubscribe("EVENT_DAMAGE", m_owner);
 		g_eventManager.Unsubscribe("EVENT_PICKUP", m_owner);
+		g_eventManager.Unsubscribe("EVENT_ADD_POINTS", m_owner);
 		g_eventManager.Unsubscribe("EVENT_HEALTH", m_owner);
+		g_eventManager.Unsubscribe("EVENT_PLAYER_DEAD", m_owner);
 	}
 
 	void CharacterComponent::Initialize()
@@ -34,6 +36,8 @@ namespace phoenix
 		READ_DATA(value, health);
 		READ_DATA(value, damage);
 		READ_DATA(value, speed);
+		READ_DATA(value, Dead);
+		READ_DATA(value, Attack);
 
 		return true;
 	}

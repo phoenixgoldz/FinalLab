@@ -6,10 +6,12 @@ void Gokuflight::Initialize()
 {
 	REGISTER_CLASS(EnemyComponent);
 
+	phoenix::g_audioSystem.AddAudio("Pickup", "Sound/coin.wav");
+
 	m_scene = std::make_unique<phoenix::Scene>();
 
 	rapidjson::Document document;
-	std::vector<std::string> sceneNames = { "Scene/prefabs.txt","Scene/level.txt", "Scene/Menu.txt" };
+	std::vector<std::string> sceneNames = { "Scene/level.txt","Scene/prefabs.txt", "Scene/Menu.txt" };
 
 	for (auto& sceneName : sceneNames)
 	{
@@ -73,7 +75,8 @@ void Gokuflight::Update()
 			auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Coin");
 			if (actor)
 			{
-				actor->m_transform.position = { phoenix::randomf(0,540), 100.0f };
+				actor->m_transform.position = { phoenix::randomf(0,540), phoenix::randomf(100,300) };
+			
 			}
 
 			// change coins to only do 1 coin in random spots fly by to collect 
@@ -164,4 +167,5 @@ void Gokuflight::OnNotify(const phoenix::Event& event)
 		m_lives;;
 		m_stateTimer = 3;
 	}
+
 }

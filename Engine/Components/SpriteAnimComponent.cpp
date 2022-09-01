@@ -57,11 +57,12 @@ namespace phoenix
 
 	bool SpriteAnimComponent::Write(const rapidjson::Value& value) const
 	{
-		return true;
+		return false;
 	}
 
 	bool SpriteAnimComponent::Read(const rapidjson::Value& value)
 	{
+	
 		// read in animation sequences 
 		if (value.HasMember("sequences") && value["sequences"].IsArray())
 		{
@@ -83,15 +84,16 @@ namespace phoenix
 
 				m_sequences[sequence.name] = sequence;
 			}
-			std::string default_sequence;
-			READ_DATA(value, default_sequence);
-			if (default_sequence.empty())
-			{
-				// if default sequence not specified, use the first sequence name in the sequences map 
-				default_sequence = m_sequences.begin()->first;
-			}
-		SetSequence(default_sequence);
 		}
+		std::string default_sequence;
+		//READ_DATA(value, default_sequence);
+		if (!READ_DATA(value, default_sequence))
+		{
+			// if default sequence not specified, use the first sequence name in the sequences map 
+			default_sequence = m_sequences.begin()->first;
+		}
+
+		SetSequence(default_sequence);
 
 		return true;
 	}
