@@ -9,7 +9,7 @@ void Gokuflight::Initialize()
 	m_scene = std::make_unique<phoenix::Scene>();
 
 	rapidjson::Document document;
-	std::vector<std::string> sceneNames = { "Scene/Menu.txt", "Scene/prefabs.txt","Scene/level.txt" };
+	std::vector<std::string> sceneNames = { "Scene/prefabs.txt","Scene/level.txt", "Scene/Menu.txt" };
 
 	for (auto& sceneName : sceneNames)
 	{
@@ -43,34 +43,38 @@ void Gokuflight::Update()
 	{
 	case Gokuflight::gameState::Menu:
 		// add title screen menu options before play begins
-	{
-			m_scene->GetActorFromName("Menu")->SetActive(false);
 
-	}
+		m_scene->GetActorFromName("Menu")->SetActive(true);
+		if (phoenix::g_inputSystem.GetKeyState(phoenix::key_enter) == phoenix::InputSystem::KeyState::Pressed)
+		{
+			m_scene->GetActorFromName("Music")->GetComponent<phoenix::AudioComponent>()->Stop();
 			m_gameState = gameState::titleScreen;
+		}
+
+
 
 		break;
 
 	case Gokuflight::gameState::titleScreen:
 	{
 
-	//	m_scene->GetActorFromName("Title")->SetActive(false);
+		m_scene->GetActorFromName("Title")->SetActive(true);
 		m_gameState = gameState::startLevel;
-		
 	}
-		break;
+	break;
 
 	case Gokuflight::gameState::startLevel:
 		// change in game music to different sound than menu screen
-
-		for (int i = 0; i < 1; i++)
+		m_scene->GetActorFromName("Menu")->SetActive(false);
+		for (int i = 0; i < 3; i++)
 		{
 			auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Coin");
-			actor->m_transform.position = { phoenix::randomf(0,400), 100.0f };
+			if (actor)
+			{
+				actor->m_transform.position = { phoenix::randomf(0,540), 100.0f };
+			}
 
 			// change coins to only do 1 coin in random spots fly by to collect 
-
-
 			actor->Initialize();
 
 			m_scene->Add(std::move(actor));
@@ -78,7 +82,11 @@ void Gokuflight::Update()
 		for (int i = 0; i < 1; i++)
 		{
 			auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Ghost");
-			actor->m_transform.position = { phoenix::randomf(0,500 ), 100.0f };
+			if (actor)
+			{
+				actor->m_transform.position = { phoenix::randomf(0,540), 100.0f };
+
+			}
 			actor->Initialize();
 
 			m_scene->Add(std::move(actor));
@@ -91,9 +99,13 @@ void Gokuflight::Update()
 	case Gokuflight::gameState::game:
 	{
 		auto actor = m_scene->GetActorFromName("Lives");
-		auto component = actor->GetComponent<phoenix::TextComponent>();
-		component->SetText(std::to_string(m_lives));
-		
+		if (actor)
+		{
+			auto component = actor->GetComponent<phoenix::TextComponent>();
+			component->SetText(std::to_string(m_lives));
+
+		}
+
 	}
 
 	//enemies fly from right side and attack player
@@ -142,7 +154,7 @@ void Gokuflight::OnNotify(const phoenix::Event& event)
 {
 	if (event.name == "EVENT_ADD_POINTS")
 	{
-		
+
 	}
 	if (event.name == "EVENT_PLAYER_DEAD")
 	{

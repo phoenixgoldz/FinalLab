@@ -176,6 +176,9 @@
     <Media Include="..\Build\Assets\Sound\DragonBallMenu.mp3" />
     <Media Include="..\Build\Assets\Sound\dragonBallZ.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Build\Assets\Fonts\Arcade Future.otf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

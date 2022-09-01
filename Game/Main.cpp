@@ -19,7 +19,7 @@ int main()
 	phoenix::Engine::Instance().Register();
 
 	//create window
-	phoenix::g_renderer.CreateWindow("GAT150 Game", 800, 600);
+	phoenix::g_renderer.CreateWindow("GAT150 Game", 1070, 680);
 	phoenix::g_renderer.SetClearColor(phoenix::Color{ 0, 0, 0, 255 });
 
 	//create game

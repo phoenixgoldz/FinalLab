@@ -7,12 +7,12 @@
 			"prefab":true,
 			"transform":{
 				"position":[
-					400,
-					200
+					100,
+					300
 				],
 				"scale":[
-					2,
-					2
+					0.2,
+					0.2
 				],
 				"rotation":0
 			},
@@ -37,7 +37,7 @@
 				},
 				{
 					"type":"SpriteAnimComponent",
-					"default_sequence":"idle",
+					"default_sequence":"run",
 					"sequences":[
 						{
 							"sequence.name":"run",
@@ -58,149 +58,130 @@
 							"texture_name":"Textures/gokunimbus.png"
 						},
 						{
-							"type":"SpriteAnimComponent",
-							"default_sequence":"idle",
-							"sequences":[
-								{
-									"sequence.name":"Attack",
-									"sequence.fps":10,
-									"sequence.num_columns":5,
-									"sequence.num_rows":1,
-									"sequence.start_frame":1,
-									"sequence.end_frame":5,
-									"texture_name":"Textures/GokuAttack.png"
-								}
-							]
+							"sequence.name":"Attack",
+							"sequence.fps":10,
+							"sequence.num_columns":5,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":5,
+							"texture_name":"Textures/GokuAttack.png"
 						}
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"Coin",
+			"tag":"Pickup",
+			"prefab":true,
+			"transform":{
+				"position":[
+					600,
+					200
+				],
+				"scale":[
+					1,
+					1
+				],
+				"rotation":0
+			},
+			"components":[
+				{
+					"type":"RBPhysicsComponent",
+					"damping":0.4,
+					"data.gravity_scale":0,
+					"data.constrain_angle":true
+				},
+				{
+					"type":"CollisionComponent",
+					"data.restitution":0.7
+				},
+				{
+					"type":"SpriteAnimComponent",
+					"default_sequence":"idle",
+					"sequences":[
+						{
+							"sequence.name":"idle",
+							"sequence.fps":8,
+							"sequence.num_columns":8,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":8,
+							"texture_name":"coin.png"
+						}
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"Ghost",
+			"tag":"Enemy",
+			"prefab":true,
+			"transform":{
+				"position":[
+					500,
+					300
+				],
+				"scale":[
+					0.8,
+					0.8
+				],
+				"rotation":0
+			},
+			"components":[
+				{
+					"type":"EnemyComponent",
+					"speed":4,
+					"health":30,
+					"damage":20
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"damping":0.4,
+					"data.gravity_scale":0,
+					"data.constrain_angle":true
+				},
+				{
+					"type":"CollisionComponent",
+					"data.restitution":0.7,
+					"data.is_trigger":true,
+					"scale_offset":[
+						0.2,
+						0.2
 					]
 				},
 				{
-					"type":"Actor",
-					"name":"Coin",
-					"tag":"Pickup",
-					"lifespan":4,
-					"prefab":true,
-					"transform":{
-						"position":[
-							600,
-							200
-						],
-						"scale":[
-							1,
-							1
-						],
-						"rotation":0
-					},
-					"components":[
+					"type":"SpriteAnimComponent",
+					"default_sequence":"run",
+					"sequences":[
 						{
-							"type":"RBPhysicsComponent",
-							"damping":0.4,
-							"data.gravity_scale":0,
-							"data.constrain_angle":true
+							"sequence.name":"idle",
+							"sequence.fps":10,
+							"sequence.num_columns":10,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":10,
+							"texture_name":"Textures/GiranFlight.png"
 						},
 						{
-							"type":"CollisionComponent",
-							"data.restitution":0.7
+							"sequence.name":"Attack",
+							"sequence.fps":6,
+							"sequence.num_columns":6,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":6,
+							"texture_name":"Textures/GiranAttack.png"
 						},
 						{
-							"type":"SpriteAnimComponent",
-							"default_sequence":"idle",
-							"sequences":[
-								{
-									"sequence.name":"idle",
-									"sequence.fps":12,
-									"sequence.num_columns":8,
-									"sequence.num_rows":1,
-									"sequence.start_frame":1,
-									"sequence.end_frame":8,
-									"texture_name":"coin.png"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type":"Actor",
-					"name":"Ghost",
-					"tag":"Enemy",
-					"prefab":true,
-					"transform":{
-						"position":[
-							600,
-							200
-						],
-						"scale":[
-							2,
-							2
-						],
-						"rotation":0
-					},
-					"components":[
-						{
-							"type":"EnemyComponent",
-							"speed":4,
-							"health":30,
-							"damage":60
-						},
-						{
-							"type":"RBPhysicsComponent",
-							"damping":0.4,
-							"data.gravity_scale":0,
-							"data.constrain_angle":true
-						},
-						{
-							"type":"CollisionComponent",
-							"data.restitution":0.7,
-							"data.is_trigger":true,
-							"scale_offset":[
-								0.5,
-								0.5
-							]
-						},
-						{
-							"type":"SpriteAnimComponent",
-							"default_sequence":"idle",
-							"sequences":[
-								{
-									"sequence.name":"idle",
-									"sequence.fps":8,
-									"sequence.num_columns":4,
-									"sequence.num_rows":1,
-									"sequence.start_frame":1,
-									"sequence.end_frame":4,
-									"texture_name":"Textures/GiranIdle.png"
-								},
-								{
-									"type":"SpriteAnimComponent",
-									"default_sequence":"Attack",
-									"sequences":[
-										{
-											"sequence.name":"idle",
-											"sequence.fps":6,
-											"sequence.num_columns":6,
-											"sequence.num_rows":1,
-											"sequence.start_frame":1,
-											"sequence.end_frame":6,
-											"texture_name":"Textures/GiranAttack.png"
-										},
-										{
-											"type":"SpriteAnimComponent",
-											"default_sequence":"run",
-											"sequences":[
-												{
-													"sequence.name":"idle",
-													"sequence.fps":8,
-													"sequence.num_columns":4,
-													"sequence.num_rows":1,
-													"sequence.start_frame":1,
-													"sequence.end_frame":4,
-													"texture_name":"Textures/GiranFlight.png"
-												}
-											]
-										}
-									]
-								}
-							]
+							"sequence.name":"run",
+							"sequence.fps":10,
+							"sequence.num_columns":10,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":10,
+							"texture_name":"Textures/GiranFlight.png"
 						}
 					]
 				}

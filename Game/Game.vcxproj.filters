@@ -117,4 +117,9 @@
       <Filter>Resource Files\Sound</Filter>
     </Media>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Build\Assets\Fonts\Arcade Future.otf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
 </Project>

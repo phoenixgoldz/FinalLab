@@ -5,12 +5,12 @@
 			"name":"Menu",
 			"transform":{
 				"position":[
-					400,
-					300
+					150,
+					0
 				],
 				"scale":[
-					1,
-					1
+					1.5,
+					1.6
 				],
 				"rotation":0
 			},
@@ -30,7 +30,7 @@
 					"sound_name":"Sound/DragonBallMenu.mp3",
 					"loop":true,
 					"pitch":1,
-					"play_on_start":false
+					"play_on_start":true
 				}
 			]
 		}

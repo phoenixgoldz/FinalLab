@@ -37,9 +37,8 @@ namespace phoenix
 		bool Get(const rapidjson::Value& value, const std::string& name, int& data)
 		{
 			// check if 'name' member exists and is of type 
-
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsInt() ==
-				false)
+			if (value.HasMember(name.c_str()) == false) return false;
+			if (value[name.c_str()].IsInt() == false)
 			{
 				LOG("error reading json data %s ", name.c_str());
 				return false;
@@ -53,7 +52,8 @@ namespace phoenix
 
 		bool Get(const rapidjson::Value& value, const std::string& name, float& data)
 		{
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsNumber() == false)
+			if (value.HasMember(name.c_str()) == false) return false;
+			if (value[name.c_str()].IsNumber() == false)
 			{
 				LOG("error reading json data %s ", name.c_str());
 				return false;
@@ -85,8 +85,8 @@ namespace phoenix
 
 		bool Get(const rapidjson::Value& value, const std::string& name, std::string& data)
 		{
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsString() ==
-				false)
+			if (value.HasMember(name.c_str()) == false) return false;
+			if (value[name.c_str()].IsString() == false)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -101,8 +101,8 @@ namespace phoenix
 		bool Get(const rapidjson::Value& value, const std::string& name, Vector2& data)
 		{
 			// check if 'name' member exists and is an array with 2 elements 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray()
-				== false || value[name.c_str()].Size() != 2)
+			if (value.HasMember(name.c_str()) == false) return false;
+			if (value[name.c_str()].Size()  != 2)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -127,8 +127,8 @@ namespace phoenix
 		bool Get(const rapidjson::Value& value, const std::string& name, Color& data)
 		{
 			// check if 'name' member exists and is an array with 2 elements 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray()
-				== false || value[name.c_str()].Size() != 4)
+			if (value.HasMember(name.c_str()) == false) return false;
+			if (value[name.c_str()].Size() != 4)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -154,8 +154,8 @@ namespace phoenix
 		bool Get(const rapidjson::Value& value, const std::string& name, Rect& data)
 		{
 			// check if 'name' member exists and is an array with 2 elements 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray()
-				== false || value[name.c_str()].Size() != 4)
+			if (value.HasMember(name.c_str()) == false) return false;
+			if (value[name.c_str()].Size() != 4)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
