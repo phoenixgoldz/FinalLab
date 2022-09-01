@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="GameComponents">
+      <UniqueIdentifier>{fe1078b5-3285-4626-a18f-ad15e2018960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Models">
+      <UniqueIdentifier>{73758f88-c8f4-48d2-983e-ccce6a1ecb6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sound">
+      <UniqueIdentifier>{953f0fa0-e87c-4716-9ce4-63c54a873056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Scene">
+      <UniqueIdentifier>{4ab6b1fc-e2b8-402f-bf0d-2a7b3a3b79ef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gokuflight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponents\EnemyComponent.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Build\Assets\Scene\Dragonuniverse.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Scene\Desert.gif">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\coin.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Scene\1_game_background.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\cloudbackground.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\GhostEnemy.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\GiranAttack.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\GiranFlight.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\GiranIdle.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\GokuAttack.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\GokuHit.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Models\gokunimbus.png">
+      <Filter>Resource Files\Models</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Scene\Oolongs Village.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Scene\2dBackgrounds\PNG\1_game_background\layers\7.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Scene\DBZhills.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Gokuflight.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponents\EnemyComponent.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\Scene\level.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Scene\prefabs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Scene\Menu.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\..\..\..\..\Downloads\Tilemap.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Build\Assets\Sound\dragonBallZ.mp3">
+      <Filter>Resource Files\Sound</Filter>
+    </Media>
+    <Media Include="..\Build\Assets\Sound\DragonBallGamestart.mp3">
+      <Filter>Resource Files\Sound</Filter>
+    </Media>
+    <Media Include="..\Build\Assets\Sound\DragonBallMenu.mp3">
+      <Filter>Resource Files\Sound</Filter>
+    </Media>
+  </ItemGroup>
+</Project>
