@@ -43,7 +43,7 @@ void Gokuflight::Update()
 	{
 	case Gokuflight::gameState::Menu:
 		// add title screen menu options before play begins
-
+		m_scene->GetActorFromName("LevelMusic")->GetComponent<phoenix::AudioComponent>()->Stop();
 		m_scene->GetActorFromName("Menu")->SetActive(true);
 		if (phoenix::g_inputSystem.GetKeyState(phoenix::key_enter) == phoenix::InputSystem::KeyState::Pressed)
 		{
@@ -60,6 +60,8 @@ void Gokuflight::Update()
 
 		m_scene->GetActorFromName("Title")->SetActive(true);
 		m_gameState = gameState::startLevel;
+
+		m_scene->GetActorFromName("LevelMusic")->GetComponent<phoenix::AudioComponent>()->Play();
 	}
 	break;
 

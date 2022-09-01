@@ -22,17 +22,29 @@
 				{
 					"type":"SpriteAnimComponent",
 					"texture_name":"Scene/7.png",
-					
 					"sequences":[
-					{
-					"sequence.name": "cloud",
-					"sequence.fps":3,
-					"sequence.num_columns":3,
-					"sequence.num_rows":1,
-					"sequence.start_frame":1,
-					"sequence.end_frame":3
-					}
+						{
+							"sequence.name":"cloud",
+							"sequence.fps":3,
+							"sequence.num_columns":3,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":3
+						}
 					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"LevelMusic",
+			"components":[
+				{
+					"type":"AudioComponent",
+					"sound_name":"Sound/dragonBallZ.mp3",
+					"loop":true,
+					"pitch":1,
+					"play_on_start":true
 				}
 			]
 		},

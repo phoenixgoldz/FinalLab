@@ -37,11 +37,11 @@
 				},
 				{
 					"type":"SpriteAnimComponent",
-					"default_sequence":"run",
+					"default_sequence":"idle",
 					"sequences":[
 						{
 							"sequence.name":"run",
-							"sequence.fps":12,
+							"sequence.fps":3,
 							"sequence.num_columns":3,
 							"sequence.num_rows":1,
 							"sequence.start_frame":1,
@@ -50,7 +50,7 @@
 						},
 						{
 							"sequence.name":"idle",
-							"sequence.fps":6,
+							"sequence.fps":3,
 							"sequence.num_columns":3,
 							"sequence.num_rows":1,
 							"sequence.start_frame":1,
@@ -59,7 +59,7 @@
 						},
 						{
 							"sequence.name":"Attack",
-							"sequence.fps":10,
+							"sequence.fps":5,
 							"sequence.num_columns":5,
 							"sequence.num_rows":1,
 							"sequence.start_frame":1,
@@ -154,7 +154,7 @@
 				},
 				{
 					"type":"SpriteAnimComponent",
-					"default_sequence":"run",
+					"default_sequence":"idle",
 					"sequences":[
 						{
 							"sequence.name":"idle",
