@@ -53,9 +53,6 @@
     <Image Include="..\Build\Assets\cloudbackground.png">
       <Filter>Resource Files\Scene</Filter>
     </Image>
-    <Image Include="..\Build\Assets\Models\GhostEnemy.png">
-      <Filter>Resource Files\Models</Filter>
-    </Image>
     <Image Include="..\Build\Assets\Models\GiranAttack.png">
       <Filter>Resource Files\Models</Filter>
     </Image>
@@ -81,6 +78,9 @@
       <Filter>Resource Files\Scene</Filter>
     </Image>
     <Image Include="..\Build\Assets\Scene\DBZhills.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
+    <Image Include="..\Build\Assets\Scene\Menu.png">
       <Filter>Resource Files\Scene</Filter>
     </Image>
   </ItemGroup>

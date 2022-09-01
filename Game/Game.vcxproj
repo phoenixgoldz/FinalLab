@@ -142,7 +142,6 @@
   <ItemGroup>
     <Image Include="..\Build\Assets\cloudbackground.png" />
     <Image Include="..\Build\Assets\coin.png" />
-    <Image Include="..\Build\Assets\Models\GhostEnemy.png" />
     <Image Include="..\Build\Assets\Models\GiranAttack.png" />
     <Image Include="..\Build\Assets\Models\GiranFlight.png" />
     <Image Include="..\Build\Assets\Models\GiranIdle.png" />
@@ -154,6 +153,7 @@
     <Image Include="..\Build\Assets\Scene\DBZhills.png" />
     <Image Include="..\Build\Assets\Scene\Desert.gif" />
     <Image Include="..\Build\Assets\Scene\Dragonuniverse.png" />
+    <Image Include="..\Build\Assets\Scene\Menu.png" />
     <Image Include="..\Build\Assets\Scene\Oolongs Village.png" />
   </ItemGroup>
   <ItemGroup>

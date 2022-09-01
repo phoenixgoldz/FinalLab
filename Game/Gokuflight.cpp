@@ -63,18 +63,18 @@ void Gokuflight::Update()
 	case Gokuflight::gameState::startLevel:
 		// change in game music to different sound than menu screen
 
-		//for (int i = 0; i < 1; i++)
-		//{
-		//	auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Coin");
-		//	actor->m_transform.position = { phoenix::randomf(0,400), 100.0f };
+		for (int i = 0; i < 1; i++)
+		{
+			auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Coin");
+			actor->m_transform.position = { phoenix::randomf(0,400), 100.0f };
 
-		//	// change coins to only do 1 coin in random spots fly by to collect 
+			// change coins to only do 1 coin in random spots fly by to collect 
 
 
-		//	actor->Initialize();
+			actor->Initialize();
 
-		//	m_scene->Add(std::move(actor));
-		//}
+			m_scene->Add(std::move(actor));
+		}
 		for (int i = 0; i < 1; i++)
 		{
 			auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Ghost");
@@ -84,6 +84,7 @@ void Gokuflight::Update()
 			m_scene->Add(std::move(actor));
 		}
 		//add clouds as transparent texture so player can pass through it and collect coins and damage enemies
+
 		m_gameState = gameState::game;
 
 		break;
@@ -92,12 +93,6 @@ void Gokuflight::Update()
 		auto actor = m_scene->GetActorFromName("Lives");
 		auto component = actor->GetComponent<phoenix::TextComponent>();
 		component->SetText(std::to_string(m_lives));
-
-		/*auto player = m_scene->GetActorFromName("Player");
-		auto playerComponent = player->GetComponent<phoenix::TextComponent>();
-		component->SetText(std::to_string((int)playerComponent->health));*/
-
-
 		
 	}
 

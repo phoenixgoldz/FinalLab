@@ -17,7 +17,7 @@
 			"components":[
 				{
 					"type":"SpriteComponent",
-					"texture_name":"Scene/Dragonuniverse.png"
+					"texture_name":"Scene/Menu.png"
 				}
 			]
 		},
@@ -30,7 +30,7 @@
 					"sound_name":"Sound/DragonBallMenu.mp3",
 					"loop":true,
 					"pitch":1,
-					"play_on_start":true
+					"play_on_start":false
 				}
 			]
 		}

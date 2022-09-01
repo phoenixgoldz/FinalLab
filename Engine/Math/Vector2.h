@@ -99,14 +99,14 @@ namespace phoenix
 		return std::acos(Dot(v));
 	}
 
-	inline float Vector2::GetSignedAngleBetween(const Vector2& v)
-	{
+	//inline float Vector2::GetSignedAngleBetween(const Vector2& v)
+	//{
 
-		float y = x * v.y - y * v.x; // perpendicular dot product 
-		float x = x * v.x + y * v.y; // dot product 
+	//	float y = x * v.y - y * v.x; // perpendicular dot product 
+	//	float x = x * v.x + y * v.y; // dot product 
 
-		return std::atan2(y, x);
-	}
+	//	return std::atan2(y, x);
+	//}
 
 	inline float Vector2::GetAngle()
 	{
