@@ -153,6 +153,7 @@
     <Image Include="..\Build\Assets\Scene\DBZhills.png" />
     <Image Include="..\Build\Assets\Scene\Desert.gif" />
     <Image Include="..\Build\Assets\Scene\Dragonuniverse.png" />
+    <Image Include="..\Build\Assets\Scene\game over.png" />
     <Image Include="..\Build\Assets\Scene\Menu.png" />
     <Image Include="..\Build\Assets\Scene\Oolongs Village.png" />
   </ItemGroup>

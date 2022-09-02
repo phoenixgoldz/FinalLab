@@ -27,7 +27,41 @@
 			"components":[
 				{
 					"type":"AudioComponent",
-					"sound_name":"Sound/DragonBallMenu.mp3",
+					"sound_name":"Sound/DragonBallGamestart.mp3",
+					"loop":true,
+					"pitch":1,
+					"play_on_start":true
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"Dead",
+			"transform":{
+				"position":[
+					150,
+					0
+				],
+				"scale":[
+					2,
+					2
+				],
+				"rotation":0
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"texture_name":"Scene/game over.png"
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"Music2",
+			"components":[
+				{
+					"type":"AudioComponent",
+					"sound_name":"Sound/dragonBallZ.mp3",
 					"loop":true,
 					"pitch":1,
 					"play_on_start":true

@@ -32,6 +32,7 @@ private:
 	gameState m_gameState = gameState::Menu;
 	float m_stateTimer = 0;
 	int m_lives = 3;
+	bool playerDead = false;
 
 	// Inherited via INotify
 	virtual void OnNotify(const phoenix::Event& event) override;

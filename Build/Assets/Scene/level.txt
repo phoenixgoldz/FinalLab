@@ -98,7 +98,7 @@
 			"components":[
 				{
 					"type":"AudioComponent",
-					"sound_name":"Sound/dragonBallZ.mp3",
+					"sound_name":"Sound/DragonBallMenu.mp3",
 					"loop":true,
 					"pitch":1,
 					"play_on_start":true

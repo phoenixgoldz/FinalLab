@@ -83,6 +83,9 @@
     <Image Include="..\Build\Assets\Scene\Dragonuniverse.png">
       <Filter>Resource Files\Scene</Filter>
     </Image>
+    <Image Include="..\Build\Assets\Scene\game over.png">
+      <Filter>Resource Files\Scene</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gokuflight.h">

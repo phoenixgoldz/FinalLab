@@ -1,6 +1,7 @@
 #include "Gokuflight.h"
 #include "Engine.h"
 #include "GameComponents/EnemyComponent.h"
+#include <Input/InputSystem.cpp>
 
 void Gokuflight::Initialize()
 {
@@ -46,6 +47,7 @@ void Gokuflight::Update()
 	case Gokuflight::gameState::Menu:
 		// add title screen menu options before play begins
 		m_scene->GetActorFromName("LevelMusic")->GetComponent<phoenix::AudioComponent>()->Stop();
+		m_scene->GetActorFromName("Music2")->GetComponent<phoenix::AudioComponent>()->Stop();
 		m_scene->GetActorFromName("Menu")->SetActive(true);
 		if (phoenix::g_inputSystem.GetKeyState(phoenix::key_enter) == phoenix::InputSystem::KeyState::Pressed)
 		{
@@ -76,7 +78,7 @@ void Gokuflight::Update()
 			if (actor)
 			{
 				actor->m_transform.position = { phoenix::randomf(0,540), phoenix::randomf(100,300) };
-			
+
 			}
 
 			// change coins to only do 1 coin in random spots fly by to collect 
@@ -96,6 +98,8 @@ void Gokuflight::Update()
 
 			m_scene->Add(std::move(actor));
 		}
+
+
 		//add clouds as transparent texture so player can pass through it and collect coins and damage enemies
 
 		m_gameState = gameState::game;
@@ -110,7 +114,17 @@ void Gokuflight::Update()
 			component->SetText(std::to_string(m_lives));
 
 		}
+		if (m_lives <= 0)
+		{
+			actor->GetComponent<phoenix::TextComponent>()->Update();
+			m_gameState = gameState::playerDead;
+		}
+		if (m_lives != 0 && m_lives <= 3)
+		{
+			//actor->GetComponent<phoenix::TextComponent>()->Update();
+			//	auto actor = phoenix::Factory::Instance().Create<phoenix::Actor>("Player");
 
+		}
 	}
 
 	//enemies fly from right side and attack player
@@ -119,16 +133,26 @@ void Gokuflight::Update()
 	break;
 	case Gokuflight::gameState::playerDead:
 		m_stateTimer = phoenix::g_time.deltaTime;
-		if (m_stateTimer <= 0)
+		if (m_stateTimer <= 1)
+		{
+			auto actor = m_scene->GetActorFromName("Dead");
+			// add game over title screen
+			m_scene->GetActorFromName("LevelMusic")->GetComponent<phoenix::AudioComponent>()->Stop();
+			m_scene->GetActorFromName("Title")->SetActive(false);
+ 			m_scene->GetActorFromName("Dead")->SetActive(true);
+			m_scene->GetActorFromName("Music2")->GetComponent<phoenix::AudioComponent>()->Play();
+			m_gameState = gameState::gameOver;
+		}
+
+		break;
+	case Gokuflight::gameState::gameOver:
+
+
+		if (phoenix::g_inputSystem.GetKeyState(phoenix::key_space) == phoenix::InputSystem::KeyState::Pressed)
 		{
 
-			m_gameState = (m_lives < 0) ? gameState::startLevel : gameState::gameOver;
+			m_gameState = gameState::Menu;
 		}
-		break;
-
-	case Gokuflight::gameState::gameOver:
-		// add game over title screen
-
 		break;
 	default:
 		break;

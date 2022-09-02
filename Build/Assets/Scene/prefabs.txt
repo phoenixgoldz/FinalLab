@@ -5,6 +5,7 @@
 			"name":"Player",
 			"tag":"Player",
 			"health": 9001,
+			"damage":30,
 			"prefab":false,
 			"transform":{
 				"position":[
@@ -145,7 +146,7 @@
 					"type":"EnemyComponent",
 					"speed":0.2,
 					"health":30,
-					"damage":20
+					"damage":10
 				},
 				{
 					"type":"RBPhysicsComponent",
