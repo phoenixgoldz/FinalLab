@@ -35,6 +35,35 @@
 				}
 			]
 		},
+		
+		{
+			"type":"Actor",
+			"name":"Roof",
+			"transform":{
+				"position":[
+					0,
+					-350
+				],
+				"scale":[
+					1,
+					1
+				],
+				"rotation":0
+			},
+			"components":[
+				{
+					"type":"RBPhysicsComponent",
+					"data.is_dynamic":false
+				},
+				{
+					"type":"CollisionComponent",
+					"data.size":[
+						800,
+						24
+					]
+				}
+			]
+		},
 		{
 			"type":"Actor",
 			"name":"Floor",
